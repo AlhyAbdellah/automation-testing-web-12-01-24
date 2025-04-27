@@ -14,7 +14,15 @@ user_data = user_file_excel("../data/users.xlsx")
 
 @pytest.fixture
 def setup():
-    driver = webdriver.Chrome()
+    chrome_options = Options()
+    chrome_options.add_argument('--headless')  # mode sans interface graphique
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+
+    # 2. Lancer Chrome avec ces options
+    driver = webdriver.Chrome(options=chrome_options)
+    # 1. Créer des options pour Chrome
+
     driver.maximize_window()
     driver.get("http://automationexercise.com")
     yield driver
