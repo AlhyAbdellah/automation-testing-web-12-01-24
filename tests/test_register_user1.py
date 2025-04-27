@@ -68,3 +68,4 @@ def test_register_user_data_driven(setup, name, password, day, month, year, firs
     assert logged_in_delete_page.is_account_deleted_visible()
     logged_in_delete_page.click_continue_after_delete()
     print("CI/CD Pipline work fine")
+    print("alhamdoli Allah")
