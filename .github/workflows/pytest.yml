@@ -1,1 +1,38 @@
+name: Run Pytest
 
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * 0' # chaque dimanche
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install selenium pytest pandas openpyxl
+
+    - name: Run tests
+      run: pytest --maxfail=1 --disable-warnings -s
+
+    - name: Upload screenshots if tests fail
+      uses: actions/upload-artifact@v4
+      with:
+        name: screenshots
+        path: screenshots
