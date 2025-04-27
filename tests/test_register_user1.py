@@ -27,6 +27,7 @@ def setup():
     driver.get("http://automationexercise.com")
     yield driver
     driver.quit()
+    
 print("hello")
 @pytest.mark.parametrize(
     "name, password, day, month, year, first_name, last_name, company, address1, country, state, city, zipcode, mobile",
