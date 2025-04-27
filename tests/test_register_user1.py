@@ -19,7 +19,7 @@ def setup():
     driver.get("http://automationexercise.com")
     yield driver
     driver.quit()
-
+print("hello")
 @pytest.mark.parametrize(
     "name, password, day, month, year, first_name, last_name, company, address1, country, state, city, zipcode, mobile",
     user_data)
@@ -67,3 +67,4 @@ def test_register_user_data_driven(setup, name, password, day, month, year, firs
     logged_in_delete_page.click_delete_account()
     assert logged_in_delete_page.is_account_deleted_visible()
     logged_in_delete_page.click_continue_after_delete()
+    print("CI/CD Pipline work fine")
