@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC # type: ignore
 from selenium.webdriver.common.action_chains import ActionChains # type: ignore  simulate mouse movements and clicks
 import random
 import time
+from utils.helpers import safe_click_with_cleanup
 
 class LoginPage:
     def __init__(self, driver):
