@@ -10,7 +10,7 @@ from pages.account_created_page import AccountCreated
 from pages.logged_in_delete_page import LoggedInDeletePage
 from utils.data_loader import user_file_excel
 
-user_data = user_file_excel("../data/users.xlsx")
+user_data = user_file_excel("data/users.xlsx")
 
 @pytest.fixture
 def setup():
@@ -27,7 +27,7 @@ def setup():
     driver.get("http://automationexercise.com")
     yield driver
     driver.quit()
-    
+
 print("hello")
 @pytest.mark.parametrize(
     "name, password, day, month, year, first_name, last_name, company, address1, country, state, city, zipcode, mobile",
