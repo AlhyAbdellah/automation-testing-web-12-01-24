@@ -41,3 +41,7 @@ def safe_click_with_cleanup(driver, element_or_locator):
         print(f"❌ Safe click with cleanup a échoué : {final_error}")
 
 
+def safe_click(driver,element):
+    return self.wait.until(EC.visibility_of_element(element))
+    print("Go")
+
