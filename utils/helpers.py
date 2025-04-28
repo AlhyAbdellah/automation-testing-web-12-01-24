@@ -5,7 +5,7 @@ from selenium.webdriver.support.ui import Select
 
 # helpers.py (dans ton dossier utils par exemple)
 
-def safe_click_with_cleanup(driver, element_or_locator, timeout=10):
+def safe_click_with_cleanup(driver, element_or_locator):
     """
     Clique sur un élément après avoir géré iframes/overlays parasites.
     Accepte soit un locator soit un WebElement.
@@ -15,7 +15,7 @@ def safe_click_with_cleanup(driver, element_or_locator, timeout=10):
         if isinstance(element_or_locator, tuple):
             from selenium.webdriver.support.ui import WebDriverWait
             from selenium.webdriver.support import expected_conditions as EC
-            element = WebDriverWait(driver, timeout).until(
+            element = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable(element_or_locator)
             )
         else:
