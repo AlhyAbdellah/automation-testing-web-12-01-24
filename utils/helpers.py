@@ -13,19 +13,20 @@ def safe_click(driver, element):
     except Exception as e:
         print(f"⚠️ Erreur safe click : {e}")
 
-def safe_click_with_cleanup(driver, element):
+def safe_click_with_cleanup(driver, element_or_locator):
     try:
-        # Supprimer les iframes parasites avant de cliquer
-        driver.execute_script("""
-            const iframes = document.querySelectorAll('iframe');
-            for (let iframe of iframes) {
-                iframe.remove();
-            }
-        """)
-        # Scroll jusqu'à l'élément
+        # Vérifier si c'est un locator (tuple) et pas déjà un WebElement
+        if isinstance(element_or_locator, tuple):
+            element = driver.find_element(*element_or_locator)
+        else:
+            element = element_or_locator
+
+        # Scroller dans la vue
         driver.execute_script("arguments[0].scrollIntoView(true);", element)
-        # Cliquer via JS
+
+        # Essayer de cliquer
         driver.execute_script("arguments[0].click();", element)
-        print("✅ Safe click réussi (après nettoyage des iframes)")
+        print("✅ Safe click réussi")
     except Exception as e:
         print(f"⚠️ Erreur safe click with cleanup: {e}")
+
