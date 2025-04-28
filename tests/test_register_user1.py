@@ -3,6 +3,7 @@
 import pytest
 from selenium import webdriver
 import random
+from selenium.webdriver.chrome.options import Options
 from pages.home_page import HomePage
 from pages.signup_page import SignupPage
 from pages.account_info_page import AccountInfoPage
