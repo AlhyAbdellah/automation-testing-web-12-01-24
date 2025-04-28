@@ -3,6 +3,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from utils.helpers import safe_click_with_cleanup
 
 class LoggedInDeletePage:
     def __init__(self, driver):
@@ -20,10 +21,12 @@ class LoggedInDeletePage:
         return self.wait.until(EC.visibility_of_element_located(self.logged_in_as_text))
 
     def click_delete_account(self):
-        self.wait.until(EC.element_to_be_clickable(self.delete_account_link)).click()
+        
+        safe_click_with_cleanup(driver, self.delete_account_link)
 
     def is_account_deleted_visible(self):
         return self.wait.until(EC.visibility_of_element_located(self.account_deleted_text))
 
     def click_continue_after_delete(self):
-        self.wait.until(EC.element_to_be_clickable(self.continue_button_after_delete)).click()
+        
+        safe_click_with_cleanup(driver, self.continue_button_after_delete)

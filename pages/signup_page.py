@@ -3,6 +3,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from utils.helpers import safe_click_with_cleanup
 
 class SignupPage:
 
@@ -25,4 +26,4 @@ class SignupPage:
         self.wait.until(EC.presence_of_element_located(self.email_field)).send_keys(email)
     
     def click_signup_button(self):
-        self.wait.until(EC.element_to_be_clickable(self.signup_button)).click()
+        safe_click_with_cleanup(driver, self.signup_button)

@@ -5,6 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 from utils.helpers import safe_click
+from utils.helpers import safe_click_with_cleanup
 
 class AccountInfoPage:
     def __init__(self, driver):
@@ -44,8 +45,10 @@ class AccountInfoPage:
         Select(self.driver.find_element(*self.years_dropdown)).select_by_visible_text(str(year))
 
         # Cochez les cases newsletter et offers
-        safe_click(self.driver, self.driver.find_element(*self.newsletter_checkbox))
-        self.wait.until(EC.element_to_be_clickable(self.offers_checkbox)).click()
+        
+        safe_click_with_cleanup(driver, self.newsletter_checkbox)
+        safe_click_with_cleanup(driver, self.offers_checkbox)
+        
 
         # Remplir l'adresse
         self.wait.until(EC.visibility_of_element_located(self.first_name_field)).send_keys(first_name)
@@ -59,4 +62,4 @@ class AccountInfoPage:
         self.driver.find_element(*self.mobile_field).send_keys(mobile)
 
     def click_create_account(self):
-        self.wait.until(EC.element_to_be_clickable(self.create_account_button)).click()
+        safe_click_with_cleanup(driver, self.create_account_button)

@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from utils.helpers import safe_click_with_cleanup
 
 class HomePage:
     
@@ -23,5 +24,5 @@ class HomePage:
 
     #Méthode pour cliquer bouton
     def click_signup(self):
-        self.wait.until(EC.element_to_be_clickable(self.signup_login)).click()
+        safe_click_with_cleanup(driver, self.signup_login)
         print("Signup cliqué depuis page Home")
