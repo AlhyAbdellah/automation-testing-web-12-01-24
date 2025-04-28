@@ -46,8 +46,8 @@ class AccountInfoPage:
 
         # Cochez les cases newsletter et offers
         
-        safe_click_with_cleanup(driver, self.newsletter_checkbox)
-        safe_click_with_cleanup(driver, self.offers_checkbox)
+        safe_click_with_cleanup(self.driver, self.newsletter_checkbox)
+        safe_click_with_cleanup(self.driver, self.offers_checkbox)
         
 
         # Remplir l'adresse
@@ -62,4 +62,4 @@ class AccountInfoPage:
         self.driver.find_element(*self.mobile_field).send_keys(mobile)
 
     def click_create_account(self):
-        safe_click_with_cleanup(driver, self.create_account_button)
+        safe_click_with_cleanup(self.driver, self.create_account_button)

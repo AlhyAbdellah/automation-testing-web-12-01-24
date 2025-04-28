@@ -26,4 +26,4 @@ class SignupPage:
         self.wait.until(EC.presence_of_element_located(self.email_field)).send_keys(email)
     
     def click_signup_button(self):
-        safe_click_with_cleanup(driver, self.signup_button)
+        safe_click_with_cleanup(self.driver, self.signup_button)

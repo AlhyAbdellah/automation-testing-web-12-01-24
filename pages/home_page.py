@@ -24,5 +24,5 @@ class HomePage:
 
     #Méthode pour cliquer bouton
     def click_signup(self):
-        safe_click_with_cleanup(driver, self.signup_login)
+        safe_click_with_cleanup(self.driver, self.signup_login)
         print("Signup cliqué depuis page Home")

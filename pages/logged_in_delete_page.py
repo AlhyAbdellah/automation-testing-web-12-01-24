@@ -22,11 +22,11 @@ class LoggedInDeletePage:
 
     def click_delete_account(self):
         
-        safe_click_with_cleanup(driver, self.delete_account_link)
+        safe_click_with_cleanup(self.driver, self.delete_account_link)
 
     def is_account_deleted_visible(self):
         return self.wait.until(EC.visibility_of_element_located(self.account_deleted_text))
 
     def click_continue_after_delete(self):
         
-        safe_click_with_cleanup(driver, self.continue_button_after_delete)
+        safe_click_with_cleanup(self.driver, self.continue_button_after_delete)

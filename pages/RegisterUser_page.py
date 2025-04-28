@@ -6,7 +6,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support import expected_conditions as EC
 import random
 import time 
-
+from utils.helpers import safe_click_with_cleanup
 # 🔧 Fonctions utilitaires robustes
 def safe_click(element):
     try:
